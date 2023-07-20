@@ -28,7 +28,8 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     @Override
     public String divide(int num1, int num2) {
-        int num3=num1/num2;
+        double num3;
+        num3 = (double) num1/num2;
         return num1+ "/"+num2+"="+num3;
     }
 }
