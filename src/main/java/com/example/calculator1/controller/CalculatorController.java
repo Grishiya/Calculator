@@ -2,10 +2,7 @@ package com.example.calculator1.controller;
 
 import com.example.calculator1.service.CalculatorService;
 import com.example.calculator1.service.CalculatorServiceImpl;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/calculator")
@@ -45,5 +42,9 @@ public class CalculatorController {
         }
         return calculatorService.divide(num1, num2);
 
+    }
+    @ExceptionHandler(Exception.class)
+    public String handleException(Exception exception){
+        return "Необходимо вводить два параметра: "+exception.getMessage();
     }
 }
