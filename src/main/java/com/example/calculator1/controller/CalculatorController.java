@@ -13,16 +13,13 @@ public class CalculatorController {
         this.calculatorService = calculatorService;
     }
 
-
     @GetMapping
     public String welcome() {
-
         return calculatorService.welcome();
     }
 
     @GetMapping("/plus")
     public String plus(@RequestParam int num1, @RequestParam int num2) {
-
         return calculatorService.plus(num1, num2);
     }
 
@@ -35,16 +32,13 @@ public class CalculatorController {
     public String multiply(@RequestParam int num1, @RequestParam int num2) {
         return calculatorService.multiply(num1, num2);
     }
-@GetMapping("/divide")
+
+    @GetMapping("/divide")
     public String divide(@RequestParam int num1, @RequestParam int num2) {
-        if (num2==0){
+        if (num2 == 0) {
             return "Делить на 0, нельзя!";
         }
         return calculatorService.divide(num1, num2);
 
-    }
-    @ExceptionHandler(Exception.class)
-    public String handleException(Exception exception){
-        return "Необходимо вводить два параметра: "+exception.getMessage();
     }
 }
