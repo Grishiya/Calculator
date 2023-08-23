@@ -10,26 +10,26 @@ public class CalculatorServiceImpl implements CalculatorService {
     }
 
     @Override
-    public int plus(int num1, int num2) {
+    public double plus(double num1, double num2) {
         return num1 + num2;
     }
 
     @Override
-    public int minus(int num1, int num2) {
+    public double minus(double num1, double num2) {
       return num1-num2;
     }
 
     @Override
-    public int multiply(int num1, int num2) {
+    public double multiply(double num1, double num2) {
 
         return num1 * num2;
     }
 
     @Override
-    public double divide(int num1, int num2) {
+    public double divide(double num1, double num2) {
         if (num2 == 0||num1==0) {
             throw new IllegalArgumentException( "Делить на 0, нельзя!");
         }
-      return (double) num1/num2;
+      return num1/num2;
     }
 }

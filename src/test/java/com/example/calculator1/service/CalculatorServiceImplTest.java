@@ -38,40 +38,45 @@ class CalculatorServiceImplTest {
 
     @Test
     void plus_num1PlusNum2_positiveNumbers() {
-        var result = underTest.plus( 5, 5 );
-        assertEquals( 10, result );
+        var result = underTest.plus( 5.5,5.5 );
+        assertEquals( 11, result );
     }
 
     @Test
-    void plus_num1PlusNum2_negativeNumbers() {
-        var result = underTest.plus( -5, -5 );
-        assertEquals( -10, result );
+    void plus_num1PlusNum2_maxNumbers() {
+        var result = underTest.plus( Integer.MAX_VALUE,Integer.MAX_VALUE );
+        assertEquals( 4.294967294E9, result );
     }
 
     @Test
-    void minus_num1PlusNum2_negativeNumbers() {
-        var result = underTest.minus( -5, -5 );
-        assertEquals( 0, result );
+    void minus_num1MinusNum2_minNumbers() {
+        var result = underTest.minus(Integer.MIN_VALUE, Integer.MAX_VALUE );
+        assertEquals( -4.294967295E9, result );
     }
 
     @Test
-    void minus_num1PlusNum2_positiveNumbers() {
-        var result = underTest.minus( 12, 6 );
-        assertEquals( 6, result );
+    void minus_num1MinusNum2_negativeNumbers() {
+        var result = underTest.minus( -12, 6 );
+        assertEquals( -18, result );
     }
 
-    @ParameterizedTest
-    @MethodSource
-    void divide__returnDouble(int num1, int num2, double result) {
-dataForDivide();
+    @Test
+    void multiply_num1MultiplyNum2_maxMultiply(){
+        var result=underTest.multiply( Integer.MAX_VALUE,Integer.MAX_VALUE );
+        assertEquals( 4.6116860141324206E18,result );
+    }
+    @Test
+    void multiply_num1MultiplyNum2_minMultiply(){
+        var result=underTest.multiply( Integer.MAX_VALUE,Integer.MIN_VALUE );
+        assertEquals( -4.6116860162799043E18,result );
+    }
+    @Test
+    void multiply_num1MultiplyNum2_fraction(){
+        var result=underTest.multiply( 3,3.1 );
+        assertEquals( 9.3,result );
     }
 
-    private  Stream<Arguments> dataForDivide() {
-        return Stream.of(
-                Arguments.of( 4, 2, 2 ),
-                Arguments.of( 5,2,2.5 )
-        );
-    }
+
 
 
 }
